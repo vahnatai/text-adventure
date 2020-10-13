@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/vahnatai/text-adventure",
   "dependencies": {
-    "file-type": "^15.0.1"
+    "mime-types": "^2.1.27"
   }
 }
