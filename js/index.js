@@ -253,7 +253,7 @@ class GameConsole {
 		this.pointCounter = pointCounter;
 		this.stepCounter = stepCounter;
 		this.history = [];
-		this.commandIndex = 0;
+		this.historyCursor = 0;
 	}
 	
 	parseCommand(command) {
@@ -265,11 +265,11 @@ class GameConsole {
 			});
 			const [baseCommand, ...args] = command.split(' ');
 			const handler = GameConsole.COMMANDS[baseCommand] ||
-			(() => {throw new Error(`I don't know how to "${baseCommand}".`)});
+				(() => {throw new Error(`I don't know how to "${baseCommand}".`)});
 			const output = handler(this.game, args);
 			this.render(output);
 			this.history.push(command);
-			this.commandIndex = this.history.length;
+			this.historyCursor = this.history.length;
 		} catch (error) {
 			this.render(error.message);
 		}
@@ -282,21 +282,19 @@ class GameConsole {
 	}
 
 	showHistoryCommand() {
-		this.input.value = this.history[this.commandIndex];
-		console.log('commandIndex', this.commandIndex);
-		console.log('history.length', this.history.length);
+		this.input.value = this.historyCursor === this.history.length ? '' : this.history[this.historyCursor];
 	}
 
 	previousCommand() {
-		if (this.commandIndex > 0) {
-			this.commandIndex--;
+		if (this.historyCursor > 0) {
+			this.historyCursor--;
 		}
 		this.showHistoryCommand();
 	}
 	
 	nextCommand() {
-		if (this.commandIndex < this.history.length - 1) {
-			this.commandIndex++;
+		if (this.historyCursor < this.history.length) {
+			this.historyCursor++;
 		}
 		this.showHistoryCommand();
 	}
