@@ -1,13 +1,13 @@
-const FileType = require('file-type');
 const fs = require('fs').promises;
 const fsconstants = require('fs').constants;
 const http = require('http');
+const mime = require('mime-types');
 const path = require('path');
 const url = require('url');
 
 const server = http.createServer(async function (request, response) {
-    const path = request.url === '/' ? '/index.html' : request.url;
-    const fullPath = __dirname + path;
+    const url = request.url === '/' ? '/index.html' : request.url;
+    const fullPath = path.join(__dirname, ...(url.split('/')));
 
     try {
         await fs.access(fullPath, fsconstants.F_OK);
@@ -19,10 +19,10 @@ const server = http.createServer(async function (request, response) {
 
     try {
         const contents = await fs.readFile(fullPath);
-        const type = await FileType.fromFile(fullPath);
+        const type = mime.lookup(fullPath);
         console.log('type', type);
 
-        response.setHeader("Content-Type", "text/html");
+        response.setHeader("Content-Type", type);
         response.writeHead(200);
         response.end(contents);
         console.log('[200] ', fullPath);
