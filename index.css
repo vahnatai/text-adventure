@@ -1,0 +1,68 @@
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 13pt;
+    font-family: "Lucida Console", monospace;
+  }
+  
+  body {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 800px;
+    margin: 50px auto;
+  }
+  
+  .output {
+    background-color: black;
+    color: white;
+    width: 800px;
+    height: 100%;
+    font-size: 13pt;
+    font-family: "Lucida Console", monospace;
+    line-height: 20px;
+  }
+  
+  .pointCount {
+    margin-top: -25px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    text-align: left;
+    z-index: 10;
+  }
+  
+  .stepCount {
+    margin-top: -25px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    text-align: right;
+    z-index: 10;
+  }
+  
+  .inputPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .inputPanel input {
+    background-color: black;
+    color: white;
+    width: 100%;
+    font-size: 13pt;
+    text-transform: uppercase;
+    font-family: "Lucida Console", monospace;
+  }
+  
+  .sendButton {
+    background-color: black;
+    color: white;
+    float: right;
+  }
