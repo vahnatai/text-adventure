@@ -13,7 +13,7 @@ class Game {
 	
 	initRooms() {
 		const foyer = new Room('FOYER', 'The decor of this room is bright and welcoming.' );
-		const hall = new Room('HALL', 'This large and comfortable space has capacity for many people, but its present emptiness strikes a lonely tone.');
+		const hall = new Room('HALL', 'This large and comfortable space has capacity for many people. Perhaps that is why seeing its present emptiness feels so lonely.');
 		const basement = new Room('BASEMENT', 'The air down here is musty and stale.');
 		
 		foyer.addItem(new Item(
