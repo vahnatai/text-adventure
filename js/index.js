@@ -235,7 +235,7 @@ class Game {
 	}
 	
 	showScore() {
-		return `Your current score is {this.points} out of `;
+		return `Your current score is ${this.points} out of ${Game.MAX_POINTS}.`;
 	}
 	
 	isDay() {
@@ -277,7 +277,7 @@ class GameConsole {
 	
 	render(message) {
 		this.output.value = message;
-		this.pointCounter.innerHTML = this.game.points;
+		this.pointCounter.innerHTML = `${this.game.points}/${Game.MAX_POINTS}`;
 		this.stepCounter.innerHTML = this.game.steps;
 	}
 
@@ -339,6 +339,9 @@ GameConsole.COMMANDS = {
 	'inventory': (game, args) => game.showInventory(),
 	'inv': (game, args) => game.showInventory(),
 	'i': (game, args) => game.showInventory(),
+
+	//score
+	'score': (game, args) => game.showScore(),
 };
 						
 window.onload = () => {
