@@ -20,16 +20,15 @@ const server = http.createServer(async function (request, response) {
     try {
         const contents = await fs.readFile(fullPath);
         const type = mime.lookup(fullPath);
-        console.log('type', type);
 
         response.setHeader("Content-Type", type);
         response.writeHead(200);
         response.end(contents);
         console.log('[200] ', fullPath);
     } catch (err) {
-        console.log('error serving file ', err.message);
         console.log('[500] ', fullPath);
         response.writeHead(500);
+        console.log('error serving file ', err.message);
         return response.end('Internal error');
     }
 });
