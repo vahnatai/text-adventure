@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/vahnatai/text-adventure/issues"
   },
-  "homepage": "https://github.com/vahnatai/text-adventure"
+  "homepage": "https://github.com/vahnatai/text-adventure",
+  "dependencies": {
+    "file-type": "^15.0.1"
+  }
 }
