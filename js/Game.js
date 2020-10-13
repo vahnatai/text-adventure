@@ -56,10 +56,13 @@ class Game {
 	}
 		
 	go(direction) {
+		if (!direction) {
+			throw Error('Go where?');
+		}
 		direction = direction.toUpperCase();
 		const destination = this.currentRoom.getExit(direction);
 		if (!destination) {
-			throw Error(`You can't find a way to go ${direction}.`);
+			throw Error(`You can't find a way to go ${direction} from here.`);
 		}
 		this.currentRoom = destination;
 		this.steps++;
@@ -83,7 +86,7 @@ class Game {
 				if (item) {
 					return item.invDesc;
 				} else {
-					throw new Error(`I can't see a "${target}" here.`);
+					throw new Error(`You can't see a "${target}" here.`);
 				}
 			}
 		}
@@ -95,7 +98,7 @@ class Game {
 		}
 		const item = this.currentRoom.getItem(target);
 		if (!item) {
-			throw new Error(`I don't know how to get "${target}".`);
+			throw new Error(`There's no "${target}" here to get.`);
 		}
 		this.currentRoom.pickupItem(this.player, item);
 		this.steps++;
