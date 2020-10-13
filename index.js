@@ -3,7 +3,6 @@ const fsconstants = require('fs').constants;
 const http = require('http');
 const mime = require('mime-types');
 const path = require('path');
-const url = require('url');
 
 const server = http.createServer(async function (request, response) {
     const url = request.url === '/' ? '/index.html' : request.url;
