@@ -72,22 +72,22 @@ class Game {
 	look(target) {
 		if (!target) {
 			return this.currentRoom.getDescription();
-		} else if (target === 'self') {
+		}
+		if (target === 'self') {
 			return this.player.getDescription();
+		}
+		const feature = this.currentRoom.getFeature(target);
+		var item = this.currentRoom.getItem(target);
+		if (feature) {
+			return feature.getDescription();
+		} else if (item) {
+			return item.floorDesc;
 		} else {
-			const feature = this.currentRoom.getFeature(target);
-			var item = this.currentRoom.getItem(target);
-			if (feature) {
-				return feature.getDescription();
-			} else if (item) {
-				return item.floorDesc;
+			item = this.player.inventory.getItem(target);
+			if (item) {
+				return item.invDesc;
 			} else {
-				item = this.player.inventory.getItem(target);
-				if (item) {
-					return item.invDesc;
-				} else {
-					throw new Error(`You can't see a "${target}" here.`);
-				}
+				throw new Error(`You can't see a "${target}" here.`);
 			}
 		}
 	}
