@@ -1,15 +1,58 @@
 import Game from './Game.js';
 
 class GameConsole {
-	constructor(input, output, pointCounter, stepCounter) {
+	constructor(input, output, pointCounter, stepCounter, sendButton) {
 		this.game = new Game();
 		this.input = input;
-		this.output = output;
+        this.output = output;
+        this.sendButton = sendButton;
 		this.pointCounter = pointCounter;
 		this.stepCounter = stepCounter;
 		this.history = [];
-		this.historyCursor = 0;
-	}
+        this.historyCursor = 0;
+    }
+
+    start() {
+        this.inputBox.onkeypress = (e) => {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13') {
+                // Enter pressed
+                this.runCommand();
+                return false;
+            }
+        }
+    
+        this.inputBox.onkeydown = (e) => {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '38') {
+                // up pressed
+                this.previousCommand();
+                return false;
+            }
+            if (keyCode == '40') {
+                // down pressed
+                this.nextCommand();
+                return false;
+            }
+        };
+    
+        this.sendButton.onclick = () => {
+            this.runCommand();
+        }
+
+        return this.render(this.game.look());
+    }
+    
+    runCommand() {
+        const command = inputBox.value.toLowerCase();
+        if (!command) {
+            return;
+        }
+        this.parseCommand(command);
+        inputBox.value = '';
+    }
 	
 	parseCommand(command) {
 		try {
