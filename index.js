@@ -5,6 +5,7 @@ const fsconstants = require('fs').constants;
 const http = require('http');
 const mime = require('mime-types');
 const path = require('path');
+const process = require('process');
 
 const server = http.createServer(async function (request, response) {
     const url = request.url === '/' ? '/index.html' : request.url;
@@ -34,4 +35,4 @@ const server = http.createServer(async function (request, response) {
     }
 });
 
-server.listen(3000);
+server.listen(process.env.PORT);
