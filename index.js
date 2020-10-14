@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const fs = require('fs').promises;
 const fsconstants = require('fs').constants;
 const http = require('http');

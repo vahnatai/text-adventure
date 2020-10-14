@@ -4,6 +4,7 @@
   "description": "framework for text adventures in html",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "test"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/vahnatai/text-adventure",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "mime-types": "^2.1.27"
   }
 }
