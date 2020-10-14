@@ -77,11 +77,11 @@ class Game {
 			return this.player.getDescription();
 		}
 		const feature = this.currentRoom.getFeature(target);
-		var item = this.currentRoom.getItem(target);
+		let item = this.currentRoom.getItem(target);
 		if (feature) {
 			return feature.getDescription();
 		} else if (item) {
-			return item.floorDesc;
+			return item.floorDesc + ' You might see more if you took a closer look at it.';
 		} else {
 			item = this.player.inventory.getItem(target);
 			if (item) {
