@@ -8,6 +8,5 @@ window.onload = () => {
 	const stepCount = document.getElementById('stepCount');
 	
 	const gc = new GameConsole(inputBox, outputBox, pointCount, stepCount, sendButton);
-	gc.render(gc.game.look());
+	gc.start();
 };
-						
