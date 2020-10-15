@@ -13,27 +13,23 @@ class GameConsole {
 	}
 
 	start() {
-		this.input.onkeypress = (e) => {
-			const keyCode = GameConsole.getKeyCode(e);
-			if (keyCode == '13') {
-				// Enter pressed
-				this.runCommand();
-				return false;
-			}
-		}
+        const keyCodeHandlers = {
+            // enter
+            '13': (gc) => gc.runCommand(),
+            // up
+            '38': (gc) => gc.previousCommand(),
+            // down
+            '40': (gc) => gc.nextCommand(),
+        };
 
 		this.input.onkeydown = (e) => {
-			const keyCode = GameConsole.getKeyCode(e);
-			if (keyCode == '38') {
-				// up pressed
-				this.previousCommand();
-				return false;
-			}
-			if (keyCode == '40') {
-				// down pressed
-				this.nextCommand();
-				return false;
-			}
+            const keyCode = GameConsole.getKeyCode(e);
+            const handler = keyCodeHandlers[keyCode];
+            if (handler) {
+                handler(this);
+                return false;
+            }
+            return true;
 		};
 
 		this.sendButton.onclick = () => {
