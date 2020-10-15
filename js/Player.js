@@ -6,7 +6,7 @@ class Player {
 	}
 	
 	getDescription() {
-		return 'Imagine a dashing adventurer of your preferred gender and description. Something like that but with less confidence.';
+		return 'You look at yourself. Imagine a dashing adventurer of your preferred gender and description. You see something like that but less dashing.';
 	}
 }
 
