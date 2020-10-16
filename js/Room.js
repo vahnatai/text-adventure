@@ -60,12 +60,12 @@ class Room {
 	getItem(itemName) {
 		return this.items.find((i) => i.name === itemName);
 	}
-	
-	pickupItem(player, item) {
-		if (!this.items.includes(item)) {
-			throw Error('attempt to pickup missing item');
+
+	removeItem(itemName) {
+		const item = this.getItem(itemName);
+		if (!item) {
+			return null;
 		}
-		player.inventory.addItem(item);
 		return this.items.splice(this.items.indexOf(item), 1);
 	}
 }

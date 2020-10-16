@@ -96,11 +96,11 @@ class Game {
 		if (!target) {
 			throw new Error('Get what?');
 		}
-		const item = this.currentRoom.getItem(target);
+		const item = this.currentRoom.removeItem(target);
 		if (!item) {
 			throw new Error(`There's no "${target}" here to get.`);
 		}
-		this.currentRoom.pickupItem(this.player, item);
+		this.player.storeItem(item);
 		this.steps++;
 		this.points++;
 		return `You pick up the ${target}.`;
