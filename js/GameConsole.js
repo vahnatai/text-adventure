@@ -1,3 +1,4 @@
+import CommandError from './CommandError.js';
 import Game from './Game.js';
 
 class GameConsole {
@@ -52,18 +53,23 @@ class GameConsole {
 		try {
 			GameConsole.SWEARS.forEach((swear) => {
 				if (command.includes(swear)) {
-					throw Error('Such fucking language!');
+					throw new CommandError('Such fucking language!');
 				}
 			});
 			const [baseCommand, ...args] = command.split(' ');
 			const handler = GameConsole.COMMANDS[baseCommand] ||
-				(() => {throw new Error(`I don't know how to "${baseCommand}".`)});
+				(() => {throw new CommandError(`I don't know how to "${baseCommand}".`)});
 			const output = handler(this.game, args);
 			this.render(output);
 			this.history.push(command);
 			this.historyCursor = this.history.length;
 		} catch (error) {
-			this.render(error.message);
+			if (error instanceof CommandError) {
+				this.render(error.message);
+				console.debug(error);
+			} else {
+				console.error(error);
+			}
 		}
 	}
 	

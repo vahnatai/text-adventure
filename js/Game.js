@@ -1,3 +1,4 @@
+import CommandError from './CommandError.js';
 import Player from './Player.js';
 import Room from './Room.js';
 import Item from './Item.js';
@@ -57,12 +58,12 @@ class Game {
 		
 	go(direction) {
 		if (!direction) {
-			throw Error('Go where?');
+			throw new CommandError('Go where?');
 		}
 		direction = direction.toUpperCase();
 		const destination = this.currentRoom.getExit(direction);
 		if (!destination) {
-			throw Error(`You can't find a way to go ${direction} from here.`);
+			throw new CommandError(`You can't find a way to go ${direction} from here.`);
 		}
 		this.currentRoom = destination;
 		this.steps++;
@@ -87,18 +88,18 @@ class Game {
 			if (item) {
 				return item.invDesc;
 			} else {
-				throw new Error(`You can't see a "${target}" here.`);
+				throw new CommandError(`You can't see a "${target}" here.`);
 			}
 		}
 	}
 	
 	get(target) {
 		if (!target) {
-			throw new Error('Get what?');
+			throw new CommandError('Get what?');
 		}
 		const item = this.currentRoom.removeItem(target);
 		if (!item) {
-			throw new Error(`There's no "${target}" here to get.`);
+			throw new CommandError(`There's no "${target}" here to get.`);
 		}
 		this.player.storeItem(item);
 		this.steps++;
