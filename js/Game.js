@@ -1,8 +1,9 @@
 import CommandError from './CommandError.js';
+import Feature from './Feature.js';
+import GameMap from './GameMap.js';
+import Item from './Item.js';
 import Player from './Player.js';
 import Room from './Room.js';
-import Item from './Item.js';
-import Feature from './Feature.js';
 
 class Game {
 	constructor() {
@@ -13,47 +14,7 @@ class Game {
 	}
 	
 	initRooms() {
-		const foyer = new Room('FOYER', 'The decor of this room is bright and welcoming.' );
-		const hall = new Room('HALL', 'This large and comfortable space has capacity for many people. Perhaps that is why seeing its present emptiness feels so lonely.');
-		const basement = new Room('BASEMENT', 'The air down here is musty and stale.');
-		
-		foyer.addItem(new Item(
-			'knife',
-			'A curved KNIFE lies on the floor.',
-			'The knife appears to be of considerable craftsmanship.',
-			'An elaborate ritual knife, its blade a tongue that curves back and forth, portuding from the mouth of a snake at the crossguard.'
-		));
-		basement.addItem(new Item(
-			'baby',
-			'A small BABY lies cooing on its back on the floor.',
-			'Yup, that\'s a live baby. It looks healthy enough.',
-			'A sweet and stupid child, oblivious to the world around it. Seems content. Maybe a little chubby.'
-		));
-				
-		foyer.addFeature(new Feature(
-			'window',
-			() => `The ${this.isDay() ? 'sun shines warmly' : 'moon glows cooly'} through a nearby window.`
-		));
-		foyer.addFeature(new Feature(
-			'box',
-			'A large wooden box sits against one wall.'
-		));
-		hall.addFeature(new Feature(
-			'throne',
-			'An opulent throne towers over the rest of the room.'
-		));
-							
-		basement.addFeature(new Feature(
-			'fruit', 
-			'A pile of old fruit rots in the corner.'
-		));
-			
-		foyer.addExit('SOUTH', hall);
-		hall.addExit('NORTH', foyer);
-		hall.addExit('SOUTH', basement);
-		basement.addExit('NORTH', hall);
-		
-		this.currentRoom = foyer;
+		this.currentRoom = GameMap.loadFromFile();
 	}
 		
 	go(direction) {
@@ -72,7 +33,7 @@ class Game {
 						
 	look(target) {
 		if (!target) {
-			return this.currentRoom.getDescription();
+			return this.currentRoom.getDescription(this);
 		}
 		if (target === 'self') {
 			return this.player.getDescription();
@@ -82,11 +43,11 @@ class Game {
 		if (feature) {
 			return feature.getDescription();
 		} else if (item) {
-			return item.floorDesc + ' You might see more if you took a closer look at it.';
+			return item.getFloorDescription();
 		} else {
 			item = this.player.inventory.getItem(target);
 			if (item) {
-				return item.invDesc;
+				return item.getInventoryDescription();
 			} else {
 				throw new CommandError(`You can't see a "${target}" here.`);
 			}

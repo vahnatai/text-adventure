@@ -4,10 +4,10 @@ class Feature {
 		this.description = description;
 	}
 	
-	getDescription() {
+	getDescription(game) {
 		return this.description instanceof Function 
-		? this.description()
-		: this.description;
+			? this.description(game)
+			: this.description;
 	}
 }
 

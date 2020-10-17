@@ -7,7 +7,7 @@ class Room {
 		this.items = [];
 	}
 	
-	getDescription() {
+	getDescription(game) {
 		const {
 			name,
 			blurb,
@@ -18,7 +18,7 @@ class Room {
 		return [
 			`You are in the ${name}.`,
 			blurb,
-			...features.map((f) => f.getDescription()),
+			...features.map((f) => f.getDescription(game)),
 			...items.map((i) => i.quickDesc),
 			this.getPrettyExits()
 		].join(' ');
