@@ -18,7 +18,7 @@ class Room {
 		return [
 			`You are in the ${name}.`,
 			blurb,
-			...features.map((f) => f.getDescription(game)),
+			...features.map((f) => f.getShortDescription(game)),
 			...items.map((i) => i.quickDesc),
 			this.getPrettyExits()
 		].join(' ');

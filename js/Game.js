@@ -41,7 +41,7 @@ class Game {
 		const feature = this.currentRoom.getFeature(target);
 		let item = this.currentRoom.getItem(target);
 		if (feature) {
-			return feature.getDescription();
+			return feature.getDescription(this);
 		} else if (item) {
 			return item.getFloorDescription();
 		} else {

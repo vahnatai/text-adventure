@@ -15,11 +15,20 @@ export default {
             features: [
                 {
                     name: 'window',
-                    description: (game) => `The ${game.isDay() ? 'sun shines warmly' : 'moon glows cooly'} through a nearby window.`
+                    description: (game) => `The ${game.isDay() ? 'sun shines warmly' : 'moon glows cooly'} through a nearby window.`,
+                    moreDescription: 'A great rolling field of grass sprawls out beyond it.'
                 },
                 {
                     name: 'box',
-                    description: 'A large wooden box sits against one wall.'
+                    description: 'A large wooden box sits against one wall.',
+                    hiddenItems: [
+                        {
+                            name: 'cube',
+                            quickDesc: 'In the darkness at the bottom of the box you see a strange metal CUBE.',
+                            floorDesc: 'A metal cube.',
+                            moreDesc: 'It has odd shaped engravings along its surface. A flat and deep slot in the center of one face looks like it could fit a key.'
+                        }
+                    ]
                 }
             ],
             exits: [
@@ -31,12 +40,24 @@ export default {
         },
         {
             name: 'HALL',
-            description: 'This large and comfortable space has capacity for many people. Perhaps that is why seeing its present emptiness feels so lonely.',
+            description: 'This large and comfortable hall has room for many people. Perhaps that is why seeing its present emptiness feels so lonely.',
             items: [],
             features: [
                 {
-                    name: 'throne',
-                    description: 'An opulent throne towers over the rest of the room.'
+                    name: 'portraits',
+                    description: 'A series of portraits cover one wall.'
+                },
+                {
+                    name: 'tables',
+                    description: 'Tables are arrayed throughout the room with plentiful seating.',
+                    hiddenItems: [
+                        {
+                            name: 'candlestick',
+                            quickDesc: 'On one table lies a red CANDLESTICK.',
+                            floorDesc: 'A red wax candle.',
+                            moreDesc: 'It looks unused.'
+                        }
+                    ]
                 }
             ],
             exits: [
@@ -64,7 +85,8 @@ export default {
             features: [
                 {
                     name: 'fruit',
-                    description: 'A pile of old fruit rots in the corner.'
+                    description: 'A pile of old fruit rots in the corner.',
+                    moreDescription: 'Fucking gross.'
                 }
             ],
             exits: [

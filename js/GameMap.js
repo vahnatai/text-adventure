@@ -18,8 +18,13 @@ GameMap.loadFromFile = () => {
         items.forEach(({name, quickDesc, floorDesc, moreDesc}) => {
             room.addItem(new Item(name, quickDesc, floorDesc, moreDesc));
         });
-        features.forEach(({name, description}) => {
-            room.addFeature(new Feature(name, description));
+        features.forEach(({name, description, moreDescription, hiddenItems}) => {
+            room.addFeature(new Feature(
+                name,
+                description,
+                moreDescription,
+                (hiddenItems || []).map(({name, quickDesc, floorDesc, moreDesc}) => new Item(name, quickDesc, floorDesc, moreDesc))
+            ));
         });
     });
 
