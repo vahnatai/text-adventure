@@ -69,7 +69,7 @@ class Game {
 	}
 						
 	showInventory() {
-		return 'Items in your inventory:\n\t' + this.player.inventory.listItems('\n\t');
+		return this.player.listInventory();
 	}
 	
 	showScore() {
