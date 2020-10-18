@@ -66,7 +66,7 @@ class Room {
 		if (!item) {
 			return null;
 		}
-		return this.items.splice(this.items.indexOf(item), 1);
+		return this.items.splice(this.items.indexOf(item), 1)[0];
 	}
 }
 
