@@ -1,5 +1,5 @@
 import GameConsole from './GameConsole.js';
-						
+
 window.onload = () => {
 	const outputBox = document.getElementById('outputBox');
 	const inputBox = document.getElementById('inputBox');
