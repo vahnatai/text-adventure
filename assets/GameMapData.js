@@ -9,7 +9,7 @@ export default {
                     name: 'knife',
                     quickDesc: 'A curved KNIFE lies on the floor.',
                     floorDesc: 'The knife appears to be of considerable craftsmanship.',
-                    moreDesc: 'Its blade is a tongue that curves back and forth, protruding from the mouth of a snake at the crossguard.'
+                    moreInfo: 'Its blade is a tongue that curves back and forth, protruding from the mouth of a snake at the crossguard.'
                 }
             ],
             features: [
@@ -26,7 +26,7 @@ export default {
                             name: 'cube',
                             quickDesc: 'In the darkness at the bottom of the box you see a strange metal CUBE.',
                             floorDesc: 'A metal cube.',
-                            moreDesc: 'It has odd shaped engravings along its surface. A flat and deep slot in the center of one face looks like it could fit a key.'
+                            moreInfo: 'It has odd shaped engravings along its surface. A flat and deep slot in the center of one face looks like it could fit a key.'
                         }
                     ]
                 }
@@ -55,7 +55,7 @@ export default {
                             name: 'candlestick',
                             quickDesc: 'On one table lies a red CANDLESTICK.',
                             floorDesc: 'A red wax candle.',
-                            moreDesc: 'It looks unused.'
+                            moreInfo: 'It looks unused.'
                         }
                     ]
                 }
@@ -79,7 +79,7 @@ export default {
                     name: 'baby',
                     quickDesc: 'A small BABY lies cooing on its back on the floor.',
                     floorDesc: 'Yup, that\'s a live baby.',
-                    moreDesc: 'It looks healthy and content enough. Slightly oblivious to the world around it. Maybe a little chubby.'
+                    moreInfo: 'It looks healthy and content enough. Slightly oblivious to the world around it. Maybe a little chubby.'
                 }
             ],
             features: [

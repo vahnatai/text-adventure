@@ -15,15 +15,15 @@ GameMap.loadFromFile = () => {
         const room = new Room(name, description);
         rooms[name] = room;
 
-        items.forEach(({name, quickDesc, floorDesc, moreDesc}) => {
-            room.addItem(new Item(name, quickDesc, floorDesc, moreDesc));
+        items.forEach(({name, quickDesc, floorDesc, moreInfo}) => {
+            room.addItem(new Item(name, quickDesc, floorDesc, moreInfo));
         });
         features.forEach(({name, description, moreDescription, hiddenItems}) => {
             room.addFeature(new Feature(
                 name,
                 description,
                 moreDescription,
-                (hiddenItems || []).map(({name, quickDesc, floorDesc, moreDesc}) => new Item(name, quickDesc, floorDesc, moreDesc))
+                (hiddenItems || []).map(({name, quickDesc, floorDesc, moreInfo}) => new Item(name, quickDesc, floorDesc, moreInfo))
             ));
         });
     });
