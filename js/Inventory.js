@@ -16,8 +16,8 @@ class Inventory {
 			return '(Empty)';
 		}
 		return this.items
-		.map((i) => i.name.toUpperCase())
-		.join(separator);
+			.map((i) => i.name.toUpperCase())
+			.join(separator);
 	}
 }
 
