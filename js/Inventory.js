@@ -2,15 +2,15 @@ class Inventory {
 	constructor() {
 		this.items = [];
 	}
-	
+
 	addItem(item) {
 		this.items.push(item);
 	}
-	
+
 	getItem(itemName) {
 		return this.items.find((i) => i.name === itemName);
 	}
-	
+
 	listItems(separator) {
 		if (!this.items.length) {
 			return '(Empty)';

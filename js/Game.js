@@ -1,9 +1,6 @@
 import CommandError from './CommandError.js';
-import Feature from './Feature.js';
 import GameMap from './GameMap.js';
-import Item from './Item.js';
 import Player from './Player.js';
-import Room from './Room.js';
 
 class Game {
 	constructor() {
@@ -12,11 +9,11 @@ class Game {
 		this.steps = 0;
 		this.points = 0;
 	}
-	
+
 	initRooms() {
 		this.currentRoom = GameMap.loadFromFile();
 	}
-		
+
 	go(direction) {
 		if (!direction) {
 			throw new CommandError('Go where?');
@@ -30,7 +27,7 @@ class Game {
 		this.steps++;
 		return `You move ${direction}...\n\n${this.look()}`;
 	}
-						
+
 	look(target) {
 		if (!target) {
 			return this.currentRoom.getDescription(this);
@@ -53,7 +50,7 @@ class Game {
 			}
 		}
 	}
-	
+
 	get(target) {
 		if (!target) {
 			throw new CommandError('Get what?');
@@ -67,15 +64,15 @@ class Game {
 		this.points++;
 		return `You pick up the ${target}.`;
 	}
-						
+
 	showInventory() {
 		return this.player.listInventory();
 	}
-	
+
 	showScore() {
 		return `Your current score is ${this.points} out of ${Game.MAX_POINTS}.`;
 	}
-	
+
 	isDay() {
 		return Boolean((Math.floor(this.steps/Game.DAY_LENGTH) + 1) % 2);
 	}

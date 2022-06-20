@@ -6,7 +6,7 @@ class Room {
 		this.features = [];
 		this.items = [];
 	}
-	
+
 	getDescription(game) {
 		const {
 			name,
@@ -23,7 +23,7 @@ class Room {
 			this.getPrettyExits()
 		].join(' ');
 	}
-	
+
 	getPrettyExits() {
 		const exits = Object.keys(this.exits);
 		if (!exits.length) {
@@ -36,27 +36,27 @@ class Room {
 		const last = ' and ' + exits.pop();
 		return description + exits.join(', ') + last + '.';
 	}
-	
+
 	addExit(direction, exit) {
 		this.exits[direction.toUpperCase()] = exit;
 	}
-	
+
 	getExit(direction) {
 		return this.exits[direction.toUpperCase()];
 	}
-	
+
 	addFeature(feature) {
-		this.features.push(feature)
+		this.features.push(feature);
 	}
-	
+
 	getFeature(featureName) {
 		return this.features.find((f) => f.name === featureName);
 	}
-	
+
 	addItem(item) {
 		this.items.push(item);
 	}
-	
+
 	getItem(itemName) {
 		return this.items.find((i) => i.name === itemName);
 	}

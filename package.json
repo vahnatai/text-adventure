@@ -1,6 +1,6 @@
 {
   "name": "text-adventure",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "framework for text adventures in html",
   "main": "index.js",
   "scripts": {

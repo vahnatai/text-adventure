@@ -11,7 +11,7 @@ class Feature {
 			? this.description(game)
 			: this.description;
 	}
-	
+
 	getDescription(game) {
 		return [
 			this.getShortDescription(game),

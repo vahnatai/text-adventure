@@ -48,7 +48,7 @@ class GameConsole {
 		this.parseCommand(command);
 		this.input.value = '';
 	}
-	
+
 	parseCommand(command) {
 		try {
 			GameConsole.SWEARS.forEach((swear) => {
@@ -72,7 +72,7 @@ class GameConsole {
 			}
 		}
 	}
-	
+
 	render(message) {
 		this.output.value = message;
 		this.pointCounter.innerHTML = `${this.game.points}/${Game.MAX_POINTS}`;
@@ -89,7 +89,7 @@ class GameConsole {
 		}
 		this.showHistoryCommand();
 	}
-	
+
 	nextCommand() {
 		if (this.historyCursor < this.history.length) {
 			this.historyCursor++;
@@ -129,14 +129,14 @@ GameConsole.COMMANDS = {
 	'w': (game, args) => game.go('west'),
 	'east': (game, args) => game.go('east'),
 	'e': (game, args) => game.go('east'),
-	
+
 	// look
 	'look': (game, args) => game.look(args[0]),
 	'l': (game, args) => game.look(args[0]),
-	
+
 	// get
 	'get': (game, args) => game.get(args.join(' ')),
-	
+
 	// inventory
 	'inventory': (game, args) => game.showInventory(),
 	'inv': (game, args) => game.showInventory(),

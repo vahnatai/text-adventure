@@ -38,7 +38,7 @@ GameMap.loadFromFile = () => {
             room.addExit(direction, destRoom);
         });
     });
-    
+
     return rooms[gameMapData.startRoomName];
 };
 

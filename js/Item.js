@@ -18,7 +18,7 @@ class Item {
 	getInventoryDescription() {
 		return this.floorDesc + ' ' + this.moreInfo;
 	}
-	
+
 	use() {
 		return this.useCallback();
 	}
