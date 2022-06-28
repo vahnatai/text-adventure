@@ -58,7 +58,7 @@ class Room {
 	}
 
 	getItem(itemName) {
-		return this.items.find((i) => i.name === itemName) || this.features.map((f) => f.getHiddenItem(itemName)).find(i => i);
+		return this.items.find((i) => i.name === itemName) || this.features.map((f) => f.getItem(itemName)).find(i => i);
 	}
 
 	removeItem(itemName) {
@@ -71,7 +71,7 @@ class Room {
 			return this.items.splice(this.items.indexOf(item), 1)[0];
 		}
 		// item within feature
-		return this.features.filter(f => f.getHiddenItem(itemName))[0].removeHiddenItem(itemName);
+		return this.features.filter(f => f.getItem(itemName))[0].removeItem(itemName);
 	}
 }
 
