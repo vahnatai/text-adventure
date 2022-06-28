@@ -58,7 +58,7 @@ class Room {
 	}
 
 	getItem(itemName) {
-		return this.items.find((i) => i.name === itemName);
+		return this.items.find((i) => i.name === itemName) || this.features.map((f) => f.getHiddenItem(itemName)).find(i => i);
 	}
 
 	removeItem(itemName) {
@@ -66,7 +66,12 @@ class Room {
 		if (!item) {
 			return null;
 		}
-		return this.items.splice(this.items.indexOf(item), 1)[0];
+		if (this.items.includes(item)) {
+			// item directly in room
+			return this.items.splice(this.items.indexOf(item), 1)[0];
+		}
+		// item within feature
+		return this.features.filter(f => f.getHiddenItem(itemName))[0].removeHiddenItem(itemName);
 	}
 }
 
