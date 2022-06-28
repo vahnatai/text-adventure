@@ -20,12 +20,12 @@ class Feature {
 		].join(' ');
 	}
 
-	getHiddenItem(itemName) {
+	getItem(itemName) {
 		return this.hiddenItems.find((i) => i.name === itemName);
 	}
 
-	removeHiddenItem(itemName) {
-		const item = this.getHiddenItem(itemName); 
+	removeItem(itemName) {
+		const item = this.getItem(itemName); 
 		return this.hiddenItems.splice(this.hiddenItems.indexOf(item), 1)[0];
 	}
 }
