@@ -2,10 +2,13 @@ import CommandError from './CommandError.js';
 import Game from './Game.js';
 
 class GameConsole {
-	constructor(input, output, pointCounter, stepCounter, sendButton) {
+	constructor(input, output, inputPreCaret, inputCaret, inputPostCaret, pointCounter, stepCounter, sendButton) {
 		this.game = new Game();
 		this.input = input;
 		this.output = output;
+		this.inputPreCaret = inputPreCaret;
+		this.inputCaret = inputCaret;
+		this.inputPostCaret = inputPostCaret;
 		this.sendButton = sendButton;
 		this.pointCounter = pointCounter;
 		this.stepCounter = stepCounter;
@@ -24,6 +27,8 @@ class GameConsole {
         };
 
 		this.input.onkeydown = (e) => {
+			const {value, selectionStart, selectionEnd} = e.target;
+			this.renderVirtualInput(value, selectionStart, selectionEnd);
             const keyCode = GameConsole.getKeyCode(e);
             const handler = keyCodeHandlers[keyCode];
             if (handler) {
@@ -33,10 +38,25 @@ class GameConsole {
             return true;
 		};
 
-		this.sendButton.onclick = () => {
+		this.input.onkeyup = (e) => {
+			const {value, selectionStart, selectionEnd} = e.target;
+			this.renderVirtualInput(value, selectionStart, selectionEnd);
+            return true;
+		};
+		
+		this.sendButton.onclick = (e) => {
 			this.runCommand();
-		}
+		};
+		
+		document.onclick = () => {
+			this.focusInput();
+		};
 
+		document.defaultView.onblur = () => {
+			this.unfocusInput();
+		};
+
+		this.renderVirtualInput('', 0, 0);
 		return this.render(this.game.look());
 	}
 
@@ -47,6 +67,7 @@ class GameConsole {
 		}
 		this.parseCommand(command);
 		this.input.value = '';
+		this.renderVirtualInput('', 0, 0);
 	}
 
 	parseCommand(command) {
@@ -71,6 +92,32 @@ class GameConsole {
 				console.error(error);
 			}
 		}
+	}
+
+	focusInput(){
+		this.input.focus();
+		this.inputCaret.parentElement.classList.add("focus");
+	}
+
+	unfocusInput(){
+		this.inputCaret.parentElement.classList.remove("focus");
+	}
+
+	renderVirtualInput(textContent, caretStart, caretEnd) {
+		const isMultiChar = caretStart !== caretEnd;
+		const isLastChar = caretStart === textContent.length;
+		if (!isMultiChar && !isLastChar) {
+			caretEnd++;
+		}
+
+		const pre = textContent.substring(0, caretStart);
+		const selection = isLastChar ? '&nbsp;' : textContent.substring(caretStart, caretEnd);
+		const post = textContent.substring(caretEnd);
+
+		this.inputPreCaret.textContent = pre;
+		this.inputCaret.innerHTML = selection;
+		this.inputPostCaret.textContent = post;
+		this.focusInput();
 	}
 
 	render(message) {
