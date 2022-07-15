@@ -1,68 +1,107 @@
 html {
-    width: 100%;
-    height: 100%;
-    font-size: 13pt;
-    font-family: "Lucida Console", monospace;
-  }
-  
-  body {
-    background-color: black;
-    color: white;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-    width: 800px;
-    margin: 50px auto;
-  }
-  
-  .output {
-    background-color: black;
-    color: white;
-    width: 800px;
-    height: 100%;
-    font-size: 13pt;
-    font-family: "Lucida Console", monospace;
-    line-height: 20px;
-  }
-  
-  .pointCount {
-    margin-top: -25px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    text-align: left;
-    z-index: 10;
-  }
-  
-  .stepCount {
-    margin-top: -25px;
-    padding-bottom: 10px;
-    padding-right: 15px;
-    text-align: right;
-    z-index: 10;
-  }
-  
-  .inputPanel {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .inputPanel input {
-    background-color: black;
-    color: white;
-    width: 100%;
-    font-size: 13pt;
-    text-transform: uppercase;
-    font-family: "Lucida Console", monospace;
-  }
-  
-  .sendButton {
-    background-color: black;
-    color: white;
-    float: right;
-  }
+	width: 100%;
+	height: 100%;
+	font-size: 13pt;
+	font-family: "Lucida Console", monospace;
+}
+
+body {
+	background-color: black;
+	color: white;
+	width: 100%;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 80%;
+	width: 800px;
+	margin: 50px auto;
+}
+
+.output {
+	background-color: black;
+	color: white;
+	width: 800px;
+	height: 100%;
+	font-size: 13pt;
+	font-family: "Lucida Console", monospace;
+	line-height: 20px;
+}
+
+.pointCount {
+	margin-top: -25px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	text-align: left;
+	z-index: 10;
+}
+
+.stepCount {
+	margin-top: -25px;
+	padding-bottom: 10px;
+	padding-right: 15px;
+	text-align: right;
+	z-index: 10;
+}
+
+.inputPanel {
+	float: left;
+	margin-left: -600000;
+	flex-direction: row;
+}
+
+.inputPanel input {
+	background-color: black;
+	color: white;
+	font-size: 13pt;
+	text-transform: uppercase;
+	font-family: "Lucida Console", monospace;
+}
+
+.sendButton {
+	background-color: black;
+	color: white;
+	float: right;
+}
+
+.virtualInputPanel  {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.virtualInputWrapper {
+	width: 100%;
+	font-size: 13pt;
+	text-transform: uppercase;
+	font-family: "Lucida Console", monospace;
+}
+
+.virtualInputWrapper.focus {
+	border-color: white;
+	border-style: solid;
+	border-width: thin;
+	border-radius: 2px;
+}
+
+.virtualInputPanel .virtualInput {
+	background-color: black;
+	color: white;
+}
+
+.virtualInputWrapper.focus > #virtualCaret {
+	animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+	from {
+	}
+	50% {
+		background-color: white;
+	}
+	to {
+		background-color: black;
+	}
+}
