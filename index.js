@@ -32,9 +32,10 @@ const server = http.createServer(async function (request, response) {
     } catch (error) {
         console.log('[500] ', relPath);
         response.writeHead(500);
-        console.log('error serving file ', error.message);
+        console.log('error serving file: ', error.message);
         return response.end('Internal error');
     }
 });
 
 server.listen(process.env.PORT);
+console.log(`Hosting on http://localhost:${process.env.PORT} ...`);
