@@ -36,7 +36,7 @@ class Game {
 			return this.player.getDescription();
 		}
 		const feature = this.currentRoom.getFeature(target);
-		let item = this.currentRoom.getItem(target);
+		let item = this.currentRoom.getItem(target) || this.currentRoom.getHiddenItem(target);
 		if (feature) {
 			return feature.getDescription(this);
 		} else if (item) {
@@ -55,7 +55,7 @@ class Game {
 		if (!target) {
 			throw new CommandError('Get what?');
 		}
-		const item = this.currentRoom.removeItem(target);
+		const item = this.currentRoom.removeItem(target) || this.currentRoom.removeHiddenItem(target);
 		if (!item) {
 			throw new CommandError(`There's no "${target}" here to get.`);
 		}

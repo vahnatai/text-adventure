@@ -19,6 +19,18 @@ class Feature {
 			...(this.hiddenItems || []).map((item) => item.getQuickDescription())
 		].join(' ');
 	}
+
+	getHiddenItem(itemName) {
+		return this.hiddenItems.find((i) => i.name === itemName);
+	}
+
+	removeHiddenItem(itemName) {
+		const item = this.getHiddenItem(itemName);
+		if (!item) {
+			return null;
+		}
+		return this.hiddenItems.splice(this.hiddenItems.indexOf(item), 1)[0];
+	}
 }
 
 export default Feature;

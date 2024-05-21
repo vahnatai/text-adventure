@@ -61,12 +61,34 @@ class Room {
 		return this.items.find((i) => i.name === itemName);
 	}
 
+	getHiddenItem(itemName) {
+		let hiddenItem;
+		this.features.some((feature) => {
+			hiddenItem = feature.getHiddenItem(itemName);
+			if (hiddenItem) {
+				return true;
+			}
+		});
+		return hiddenItem;
+	}
+
 	removeItem(itemName) {
 		const item = this.getItem(itemName);
 		if (!item) {
 			return null;
 		}
 		return this.items.splice(this.items.indexOf(item), 1)[0];
+	}
+
+	removeHiddenItem(itemName) {
+		let hiddenItem;
+		this.features.some((feature) => {
+			hiddenItem = feature.removeHiddenItem(itemName);
+			if (hiddenItem) {
+				return true;
+			}
+		});
+		return hiddenItem;
 	}
 }
 
