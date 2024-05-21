@@ -16,7 +16,8 @@ export default {
                 {
                     name: 'window',
                     description: (game) => `The ${game.isDay() ? 'sun shines warmly' : 'moon glows cooly'} through a nearby window.`,
-                    moreDescription: 'A great rolling field of grass sprawls out beyond it.'
+                    moreDescription: 'A great rolling field of grass sprawls out beyond it.',
+                    cantGetReason: 'It is pretty firmly affixed to the wall.'
                 },
                 {
                     name: 'box',
@@ -28,7 +29,8 @@ export default {
                             floorDesc: 'A metal cube.',
                             moreInfo: 'It has odd shaped engravings along its surface. A flat and deep slot in the center of one face looks like it could fit a key.'
                         }
-                    ]
+                    ],
+                    cantGetReason: 'It is way too big for that.'
                 }
             ],
             exits: [
@@ -45,7 +47,8 @@ export default {
             features: [
                 {
                     name: 'portraits',
-                    description: 'A series of portraits cover one wall.'
+                    description: 'A series of portraits cover one wall.',
+                    cantGetReason: 'They are stuck firmly to the wall.'
                 },
                 {
                     name: 'tables',
@@ -57,7 +60,8 @@ export default {
                             floorDesc: 'A red wax candle.',
                             moreInfo: 'It looks unused.'
                         }
-                    ]
+                    ],
+                    cantGetReason: 'WAY to big and heavy.'
                 }
             ],
             exits: [
@@ -86,7 +90,8 @@ export default {
                 {
                     name: 'fruit',
                     description: 'A pile of old fruit rots in the corner.',
-                    moreDescription: 'Fucking gross.'
+                    moreDescription: 'Fucking gross.',
+                    cantGetReason: 'It\'s nasty. Shut up.'
                 }
             ],
             exits: [

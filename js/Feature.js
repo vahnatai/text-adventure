@@ -1,9 +1,10 @@
 class Feature {
-	constructor(name, description, moreDescription, hiddenItems) {
+	constructor(name, description, moreDescription, hiddenItems, cantGetReason) {
 		this.name = name;
 		this.description = description;
 		this.moreDescription = moreDescription;
 		this.hiddenItems = hiddenItems;
+		this.cantGetReason = cantGetReason;
 	}
 
 	getShortDescription(game) {
@@ -30,6 +31,10 @@ class Feature {
 			return null;
 		}
 		return this.hiddenItems.splice(this.hiddenItems.indexOf(item), 1)[0];
+	}
+
+	getCantGetReason() {
+		return this.cantGetReason;
 	}
 }
 

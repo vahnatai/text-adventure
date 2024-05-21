@@ -57,6 +57,10 @@ class Game {
 		}
 		const item = this.currentRoom.removeItem(target) || this.currentRoom.removeHiddenItem(target);
 		if (!item) {
+			const feature = this.currentRoom.getFeature(target);
+			if (feature) {
+				throw new CommandError(`You can't get the ${target}! ${feature.getCantGetReason() || ''}`);
+			}
 			throw new CommandError(`There's no "${target}" here to get.`);
 		}
 		this.player.storeItem(item);
